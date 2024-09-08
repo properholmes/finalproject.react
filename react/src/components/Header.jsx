@@ -4,7 +4,7 @@ function Header() {
     <>
       <header>
         <nav className="navContainer navbar navbar-expand-lg navbar-light bg-light fixed-top">
-          <a className="navbar-brand" href="#">Navbar</a>
+          <a className="navbar-brand" href="./index.html">Play2Learn</a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -12,20 +12,18 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                <a className="nav-link" href="./index.html">Home<span className="sr-only">(current)</span></a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">Link</a>
               </li>
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Dropdown
+                  Games
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href="#">Action</a>
-                  <a className="dropdown-item" href="#">Another action</a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">Something else here</a>
+                  <a className="dropdown-item" href="./src/MathFacts/Math.html">Math Facts Practice</a>
+                  <a className="dropdown-item" href="#">Anagram Hunt</a>
                 </div>
               </li>
             </ul>
