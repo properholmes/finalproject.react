@@ -1,0 +1,438 @@
+/* High Contrast Colors I want to use:
+    #07dc98 "minty"
+    #149d5f "green"
+    #deddc6 "chino"
+    B&W #ffffff / #030303
+*/
+:root {
+    --minty: #07dc98;
+    --loden: #05704e;
+    --green: #00cc70;
+    --chino: #deddc6;
+    --white: #ffffff;
+    --black: #030303;
+}
+
+* {
+    font-family: 'Kanit', Arial, sans-serif;
+}
+
+h1 {
+    color: var(--chino);
+    text-shadow: .75px 1px black;
+    font-size: 2.75em;
+    margin: 1%;
+    padding-bottom: 0%;
+    padding-left: 3%;
+}
+
+i.fa-solid.fa-frog {
+    color: var(--minty);
+    font-size: 1.3em;
+}
+
+h1 a {
+    text-decoration: none;
+    color: var(--chino);
+    padding-left: 1%;
+}
+
+body {
+    background-color: var(--green);
+    display: grid;
+    grid-template-rows: 1fr auto;
+    overflow: scroll;
+}
+
+.nav-container {
+    margin-bottom: 2.5%;
+}
+
+.navbar {
+    display: block;
+    align-items: left;
+    height: 80px;
+    width: 90%;
+    max-width: 1720px;
+}
+
+#navbar-logo {
+    color: var(--white);
+    justify-self: start;
+    margin-top: 3%;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.nav-menu {
+    list-style: none;
+    text-align: center;
+    padding-left: 3.5%;
+    width: 70%;
+}
+
+.nav-links {
+    text-decoration: none;
+    font-size: 1.5em;
+    display: block;
+    float: left;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links a {
+    color: var(--chino);
+    text-shadow: .25px 1px var(--loden);
+}
+
+.nav-links a:active {
+    color: var(--green);
+}
+
+#games {
+    color: var(--chino);
+    text-shadow: .25px 1px var(--loden);
+    text-decoration: underline;
+
+}
+
+#game-links .nav-links {
+    font-size: .7em;
+}
+
+.nav-links:hover {
+    background-color: var(--minty);
+    transition: all 0.3s ease-out;
+}
+
+.nav-links:active {
+    color: var(--black);
+    transition: all 0.3s ease-out;
+}
+
+#games-links {
+    display: none;
+    padding: 12px;
+    font-size: .75em;;
+}
+
+#games:hover #games-links {
+    display: block;
+    position: absolute;
+    float: left;
+    font-size: .85rem;
+}
+
+#games-links:hover {
+    display: block;
+    position: absolute;
+    padding: 12px;
+}
+
+#testimonials {
+    background-color: #deddc6;
+    display: fixed;
+    border: 1px solid black;
+    border-radius: .75em;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    margin-left: 27%;
+    margin-right: 27%;
+}
+
+#testimonials h2 {
+    color: white;
+    text-shadow: .75px 1px black;
+    text-align: center;
+}
+
+#quote {
+    color: black;
+    text-shadow: .75px 1px white;
+}
+
+#gameselect {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-bottom: 100px;
+}
+
+#gameselect h2 {
+    text-shadow: .75px 1px black;
+    flex-grow: 2;
+}
+
+#gameselect p {
+    text-shadow: .75px 1px black;
+    align-content: center;
+    flex-grow: 3;
+}
+
+#article1,
+#article2 {
+    /* Inherit styles from original definitions */
+    color: white;
+    text-shadow: .75px 1px black;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    margin: 5%;
+}
+
+#gameselect,
+p {
+    font-size: 1.25rem;
+}
+
+#article1 {
+    z-index: 1;
+    margin: 10px;
+    max-width: 35%;
+    max-height: 30%;
+}
+
+#article1::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url('images/letters.jpg');
+    background-size: cover;
+    opacity: 0.3;
+}
+
+#article2 {
+    z-index: 1;
+    padding: 5px;
+    margin: 10px;
+    max-width: 35%;
+}
+
+#article2::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url('images/numbers.jpg');
+    background-size: cover;
+    opacity: .3;
+}
+
+.a-button {
+    background-color: #deddc6;
+    color: var(--black);
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 1.5rem;
+    border-color: black;
+    border-radius: 0.5rem;
+    border-width: 0 0.2rem 0.2rem 0;
+    width: 5em;
+    padding: 1rem;
+    margin-bottom: 15px;
+}
+
+.a-button:hover {
+    background-color: var(--minty);
+    color: var(--chino);
+    cursor: pointer;
+}
+
+.a-button:active {
+    background-color: var(--green);
+    color: var(--loden);
+}
+
+#login-form {
+    background-color: var(--minty);
+    width: 500px;
+    padding: 2%;
+    margin: 20px auto;
+    border: solid 1px black;
+}
+
+#login-form input {
+    position: block;
+}
+
+#register {
+    display: none;
+    background-color: var(--minty);
+    width: 500px;
+    padding: 2%;
+    margin: 50px auto;
+    border: solid 1px black;
+}
+
+#check-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2%;
+}
+
+#agecheck {
+    width: auto;
+    margin-right: 5px;
+}
+
+label {
+    display: block;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 100;
+    font-weight: bold;
+    margin: 5px 0px;
+}
+
+input {
+    box-sizing: border-box;
+    font-size: large;
+    padding: 4px;
+    width: 100%;
+}
+
+button {
+    background-color: green;
+    color: white;
+    font-family: 'Kanit', Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    margin-top: 10px;
+    padding: 5px;
+    width: 100%;
+}
+
+button:hover {
+    background-color: var(--minty);
+    color: black;
+    cursor: pointer;
+}
+
+button:active {
+    background-color: var(--green);
+    color: var(--loden);
+}
+
+.about {
+    display: flex-column;
+    font-size: 1.5em;
+    margin: 3%;
+    padding-top: 1%;
+    padding-bottom: 2%
+}
+
+#about-us,
+h2 {
+    color: white;
+    text-shadow: .75px 1px black;
+}
+
+.about,
+p {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: .75px 1px black;
+    z-index: -1;
+    padding-top: 1%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 1%;
+}
+
+.about p:after {
+    content: "";
+    background-image: url("images/kids.jpg");
+    background-size: cover;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.05;
+}
+
+.about p:first-of-type::first-letter {
+    color: var(--chino);
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+#contact-us {
+    background-color: var(--minty);
+    justify-content: center;
+    padding: 2%;
+    margin: 20px auto;
+    border: solid 1px black;
+}
+
+#contact-form {
+    width: 500px;
+    max-height: 600px;
+}
+
+#contact-form textarea {
+    width: 100%;
+    height: 100px;
+}
+
+.footer {
+    background-color: var(--loden);
+    border-top: 2px solid var(--chino);
+    grid-row-start: 2;
+    grid-row-end: 3;
+    position: fixed;
+    width: 100%;
+    height: 7%;
+    z-index: 1;
+    bottom: 0;
+    display: grid;
+    /* Added display: grid */
+    padding-bottom: 5px;
+    grid-template-columns: 1fr auto;
+    /* Define two grid columns */
+    align-items: flex-end;
+    /* Maintain vertical alignment at bottom */
+}
+
+address {
+    position: sticky;
+    padding-bottom: 5px;
+}
+
+#copywrite {
+    color: var(--chino);
+    font-size: 1.5em;
+    margin-left: -25px;
+    margin-top: 10px;
+    text-shadow: .75px 1px black;
+    grid-column: 1;
+}
+
+
+#email-p2l,
+#insta,
+#x-twitter,
+#meta-fb {
+    font-size: 1.9em;
+    color: black;
+    margin-top: 1%;
+    margin-right: 15px;
+    margin-bottom: 25px;
+}
+
+#insta {
+    color: #f8dcab;
+}
+
+#x-twitter {
+    color: white;
+}
+
+#meta-fb {
+    color: #3b5998;
+}

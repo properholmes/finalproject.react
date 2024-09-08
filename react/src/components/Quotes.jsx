@@ -1,6 +1,6 @@
 function Quotes() {
     
-    //random quote generator: 
+//random quote generator: 
 //first create an array of quotes (strings)
 const quotes = [
     '"Thanks to Anagram Hunt, I finally aced that Scrabble tournament against my grandma! Now she owes me those cookies." -TurboTypist_98 (age 10 & 3/4)',

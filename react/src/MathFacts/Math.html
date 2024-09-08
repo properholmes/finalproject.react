@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/src/App.css">
+  <link rel="stylesheet" href="math.css">
+  <script src="math.js"></script>
+  <title>Play2Learn</title>
+</head>
+
+<body>
+  <main>
+    <div id="math-container">
+      <h2 id="math-title">Math Facts Practice</h2>
+      <div id="math-setup">
+        <form id="math-form">
+          <div id="selction-operation">
+            <label for="operation">Operation:</label>
+            <select id="operation" name="operation">
+              <option value="addition">Addition</option>
+              <option value="subtraction">Subtraction</option>
+              <option value="multiplication">Multiplication</option>
+              <option value="division">Division</option>
+            </select>
+          </div>
+        </form>
+
+        <div id="directions">
+          <ul>
+            <li>1. Select Operation.</li>
+            <li>2. Press <strong>Go.</strong></li>
+            <li>3. How many problems can you solve in 30 seconds?</li>
+          </ul>
+        </div>
+        <button type="submit" id="go-btn">Go</button>
+      </div>
+
+      <div id="math-facts-game">
+        <h3 id="game-mode"></h3>
+        <h3 id="math-problem"></h3>
+        <form>
+          <input type="text" id="answer" placeholder="Enter your answer here">
+        </form>
+
+        <table>
+          <tr>
+            <td>
+              <button class="int" value="1">1</button>
+            </td>
+            <td>
+              <button class="int">2</button>
+            </td>
+            <td>
+              <button class="int">3</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="int">4</button>
+            </td>
+            <td>
+              <button class="int">5</button>
+            </td>
+            <td>
+              <button class="int">6</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="int">7</button>
+            </td>
+            <td>
+              <button class="int">8</button>
+            </td>
+            <td>
+              <button class="int">9</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button class="int">0</button>
+            </td>
+            <td colspan="2">
+              <button id="clearBtn" class="int">CLEAR</button>
+            </td>
+          </tr>
+        </table>
+        <h3 id="score"></h3>
+        <h3 id="message"></h3>
+        <h3 id="math-timer"></h3>
+      </div>
+      <div id="final-view">
+        <h3 id="selectedGameMode"></h3>
+        <h5>Time's up!</h5>
+        <h3>Your final score is:</h3>
+        <h2 id="final-score"></h2>
+        <button type="play-again" id="again-btn">Play Again</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
