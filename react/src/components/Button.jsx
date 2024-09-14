@@ -1,11 +1,23 @@
-function Button({url}) { 
+import {Link} from 'react-router-dom';
 
+function Button( {buttondata} ) { 
 
+    if(buttondata.type === "math") {
 
-    return (
-        // <button onClick={handleClick}>Play</button>
-        <a className="btn btn-primary" href={url} target="_blank">Play</a>
-    )
+        return (
+            // <button onClick={handleClick}>Play</button>
+            <a className="btn btn-primary" href={buttondata.src} target="_blank">Play {buttondata.title}</a>
+        )
+       
+    } else {
+
+        return (
+            <Link className="btn btn-primary" to={buttondata.src}>Play {buttondata.title}</Link>
+        )
+
+    }
+
+   
 }
 
 export default Button

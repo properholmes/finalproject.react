@@ -1,15 +1,14 @@
 import GameSetup from './GameSetup';
 import GamePlay from './GamePlay';
 import GameScore from './GameScore';
-import Timer from './Timer'
-import anagrams from "/src/assets/anagramsArray.js"
-import { useState } from 'react'
-import {Routes, Route} from 'react-router-dom'
+import anagrams from "./anagramsArray.js";
+import { useState } from 'react';
+import {Routes, Route} from 'react-router-dom';
 import './App.css'
 
 
 
-function App() {
+function AnagramApp() {
   const [wordLength, setWordLength] = useState('5');
   const wordAnswers = findRandom(anagrams[wordLength]);
   const [score, setScore] = useState(0);
@@ -58,4 +57,4 @@ function App() {
   )
 }
 
-export default App
+export default AnagramApp

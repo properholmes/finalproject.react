@@ -10,10 +10,9 @@ function Card({ data }) {
                      style={{'maxHeight': '40%'}}/>
                 <div className="card-body">
                     <h5 className="card-title">{data.title}</h5>
-                    <p className="card-text">{data.description}</p>
-                    
+                    <p className="card-text">{data.description}</p>   
                 </div>
-                <Button url={data.src} />
+                <Button buttondata={data} />
             </div>
 
     )

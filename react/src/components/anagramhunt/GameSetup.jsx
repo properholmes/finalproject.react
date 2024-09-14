@@ -1,13 +1,14 @@
-import anagrams from "/src/assets/anagramsArray.js"
+import anagrams from "./anagramsArray.js"
 import SelectInput from "./SelectInput"
 import Directions from "./Directions"
-import Button from "./Button"
+import Button from "./AnagramBtn"
 
 function GameSetup (props){
     const options = Object.keys(anagrams);
    
     return (
         <div id="ana-setup" className="display-6">
+                    <h1 className="display-2">Anagram Hunt</h1>
                     <SelectInput 
                     label="Word Length"
                     id="word-length"

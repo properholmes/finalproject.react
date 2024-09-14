@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Score from "./Score";
-import Button from "./Button";
+import Button from "./AnagramBtn";
 
 
 function GameScore (props) {

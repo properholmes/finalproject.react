@@ -6,7 +6,7 @@ import UserGuesses from "./UserGuesses";
 import SolveMe from "./SolveMe";
 import TextInput from "./TextInput";
 import Keyboard from "./KeyBoard";
-import anagrams from "/src/assets/anagramsArray.js"
+import anagrams from "./anagramsArray.js"
 
 function GamePlay(props) {
     const [wordLength, setWordLength] = useState(props.wordLength); 

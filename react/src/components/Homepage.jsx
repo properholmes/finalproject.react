@@ -6,6 +6,7 @@ function Homepage(props) {
 
     const math = {
         title: "Math Facts Practice",
+        type: "math",
         description: "Fun and effective Math Practice, for all ages! A super fun way to sharpen your math skills and become a whiz with numbers! Ready for the challenge?",
         src: "../src/MathFacts/Math.html",
         image: "../src/assets/images/numbers.jpg"
@@ -13,8 +14,9 @@ function Homepage(props) {
     
       const anagram = {
         title: "Anagram Hunt",
+        type: "anagram",
         description: "Calling all word wizards! Dive into Anagram Hunt, a game that challenges you to find all the hidden words formed by rearranging the letters of a given word.",
-        src: "tbd",
+        src: "/anagramhunt",
         image: "../src/assets/images/letters.jpg"
       }
     
@@ -23,15 +25,15 @@ function Homepage(props) {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-auto">
-            <Quotes className='quotes'/>
+            <Quotes className='quotes' />
             </div>
           </div>
           <div className="row justify-content-center">
             <div className="col-lg">
-            <Card data={math}/>
+            <Card data={math} />
             </div>
             <div className="col-lg">
-            <Card data={anagram}/>
+            <Card data={anagram} />
             </div>
           </div>
         </div>
