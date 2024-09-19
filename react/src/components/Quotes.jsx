@@ -1,3 +1,5 @@
+import {useState, useEffect} from 'react';
+
 function Quotes() {
     
 //random quote generator: 
@@ -14,7 +16,8 @@ const quotes = [
   function randInt(low, high) {
     //declare a constant variable rndDec and assign it Math.random() function
     const rndDec = Math.random();
-    //calculate random integer within the specified range. Multiply the random decimal by the difference between the high and low values, add 1 to account for the inclusive low value round down the result using Math.floor(), and add the low value again to get the final random integer within the range
+    //calculate random integer within the specified range. Multiply the random decimal by the difference between the high and low values, 
+    //add 1 to account for the inclusive low value round down the result using Math.floor(), and add the low value again to get the final random integer within the range
     const rndInt = Math.floor(rndDec * (high - low + 1) + low);
     //return the random integer
     return rndInt;
@@ -27,27 +30,17 @@ const quotes = [
     //return the quote at the random index
     return quotes[randomIndex];
   }
-  // update the quote on the webpage, use a try / catch block to catch errors
-  function updateQuote() {
-    try {
-      //get the quote element by its id
-      const quoteElement = document.getElementById("quote");
-      //if the quote element exists, update
-      if (quoteElement) {
-        //get a new random quote
-        const newQuote = getRandomQuote();
-        //set the inner text of the quote element to the new quote
-        quoteElement.innerText = newQuote;
-      }
-      //if the quote element does not exist, log an error
-    } catch (error) {
-      console.error("Error updating quote:", error);
-    }
-  }
-  // Call updateQuote function to display a random quote
-  updateQuote();
-  // Set interval to update quote every 10 seconds
-  setInterval(updateQuote, 10000);
+
+  
+  const[quote, setQuote] = useState(getRandomQuote());
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setQuote(getRandomQuote());
+    }, 10000);
+//unmount quotes component as necessary for switching between components/routes
+    return () => clearInterval(intervalId);
+  },[]);
   
 
     return (
@@ -55,11 +48,11 @@ const quotes = [
         <aside id="testimonials">
             <h2>Happy Clients Say...</h2>
             <span>
-                <p id="quote"></p>
+                <p id="quote">{quote}</p>
             </span>
         </aside>
         )
     
 }
 
-export default Quotes
+export default Quotes 

@@ -1,6 +1,5 @@
 import Quotes from "./Quotes"
 import Card from "./Card"
-import "../homepage.css"
 
 function Homepage(props) { 
 

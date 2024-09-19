@@ -8,9 +8,9 @@ import GameScore from './components/anagramhunt/GameScore';
 import GameSetup from './components/anagramhunt/GameSetup';
 import Header from "./components/Header";
 import Homepage from './components/Homepage';
+import Login from './components/Login';
+import Register from './components/Register';
 import './anaApp.css'
-
-
 
 
 function App() { 
@@ -56,8 +56,10 @@ function App() {
         </Route>
         <Route exact path="/score" element={
           <GameScore score={score}/>
-        }>
+        }>          
         </Route>
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
     </Routes>
     <Footer />
     </>

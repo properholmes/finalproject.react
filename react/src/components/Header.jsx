@@ -23,12 +23,12 @@ function Header() {
                   Games
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href="./src/MathFacts/Math.html">Math Facts Practice</a>
+                  <a className="dropdown-item" href="./src/MathFacts/Math.html" target="blank">Math Facts Practice</a>
                   <a className="dropdown-item" href="./anagramhunt">Anagram Hunt</a>
                 </div>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Login</a>
+                <a className="nav-link" href="/login">Login</a>
               </li>
             </ul>
       
