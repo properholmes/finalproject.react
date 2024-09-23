@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Score from "./Score";
 import Button from "./AnagramBtn";
+import Proptypes from 'prop-types';
 
 
 function GameScore (props) {
@@ -8,10 +9,14 @@ function GameScore (props) {
         <div id="ana-finalview" className="d-grid gap-5">
             <Score score={props.score} />
             <Link to="/play" className="btn btn-primary">Play Again!</Link>
-            <Link to="/" className="btn btn-primary">Back to Settings</Link>
+            <Link to="/anagramhunt" className="btn btn-primary">Back to Settings</Link>
         </div>
 
     )
+}
+
+GameScore.propTypes = {
+    score: Proptypes.number
 }
 
 export default GameScore;

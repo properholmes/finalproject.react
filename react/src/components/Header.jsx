@@ -24,7 +24,7 @@ function Header() {
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a className="dropdown-item" href="./src/MathFacts/Math.html" target="blank">Math Facts Practice</a>
-                  <a className="dropdown-item" href="./anagramhunt">Anagram Hunt</a>
+                  <a className="dropdown-item" href="./anagramhunt" target="blank">Anagram Hunt</a>
                 </div>
               </li>
               <li className="nav-item">

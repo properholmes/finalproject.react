@@ -10,7 +10,7 @@ function Timer() {
     const timer = setInterval(() => {
       // Decrement secs remaining, make sure it doesn't go below 0
       setSecondsRemaining(prevSeconds => Math.max(0, prevSeconds - 1));
-    }, 1000);
+    }, 10); // revise to 1000ms when not testing (10 minutes)
 
     // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(timer);

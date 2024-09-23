@@ -20,12 +20,10 @@ function GamePlay(props) {
     const [wordsLeft, setWordsLeft] = useState(possibleWords.length - 1);
     const [inputValue, setInputValue] = useState(''); // State for input value;
     const [correctAnswers, setCorrectAnswers] = useState([]);
-    
-   
-   
-    
+    // const [score, setScore] = useState(0);
 
     const checkAnswer = (userInput) => {
+
         const inList = wordAnswers.includes(userInput);
 
             console.log(startingWord);
@@ -94,7 +92,7 @@ function GamePlay(props) {
 
     return (
         <div id="ana-play" className="object-fit-fill solid rounded display-6">
-            <Score score={props.score} />
+            <Score score={setScore} />
             <Timer />
             <hr />
             <SolveMe startingWord={startingWord} wordLength={wordLength} />
