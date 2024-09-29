@@ -18,6 +18,7 @@ function GamePlay(props) {
     const [wordHint, setWordHint] = useState(props.findRandom(wordAnswers));
 
     
+    
     // list of possible answers in anagram block
     const[possibleWords, setPossibleWords] = useState(wordAnswers);
 
@@ -28,6 +29,11 @@ function GamePlay(props) {
             return []; // Return an empty array if either possibleWords or wordHint is undefined
         }
     });
+
+    console.log("Word Annswers: " + wordAnswers);
+    console.log("Possible Annswers: " + possibleWords);
+    console.log("filteredPossible: " + filteredPossible);
+
     // words left in the anagram block
     const [wordsLeft, setWordsLeft] = useState(possibleWords.length - 1);
     // user input - set first to an empty sting
@@ -41,6 +47,7 @@ function GamePlay(props) {
     
     //check answer function that sees if word is in anagram block and adds to correct answers array
     const checkAnswer = (userInput) => {
+        if (!userInput) return;
 
         const inList = filteredPossible.includes(userInput);
 
@@ -68,7 +75,7 @@ function GamePlay(props) {
 
 
     console.log("Correct (block) Answer:" + blockCorrect.length);
-    console.log("Possible Words:" + possibleWords.length);
+    console.log("Possible Words: " + possibleWords.length + " " +possibleWords);
 
     if (blockCorrect.length === possibleWords.length - 1) {
                 
@@ -79,9 +86,11 @@ function GamePlay(props) {
         const newWordList = props.findRandom(filteredAnagrams);
         setWordsLeft(w => possibleWords.length - 1);
         const newWord = props.findRandom(newWordList);
-        console.log(newWordList);
+      
         setWordHint(w => newWord);
-        const newPossible = newWordList.filter((item) => item !== newWord)
+        setPossibleWords(newWordList);
+        //check to see if the newWordList is defined before filtering - was running into errors here
+        const newPossible = newWordList && newWordList.filter((item) => item !== newWord);
         setFilteredPossible(p => [...newPossible]);
         setBlockCorrect([]);
     }
@@ -112,7 +121,7 @@ function GamePlay(props) {
                 setInputValue={setInputValue} // Pass function to update input 
                 checkAnswer={checkAnswer}
             />
-            <Left wordsLeft={wordsLeft} />
+            <Left wordsLeft={filteredPossible.length} />
             <UserGuesses possibleWords={filteredPossible} correctAnswers={correctAnswers} />
         </div>
     );
