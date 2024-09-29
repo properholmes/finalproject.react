@@ -21,7 +21,13 @@ function GamePlay(props) {
     // list of possible answers in anagram block
     const[possibleWords, setPossibleWords] = useState(wordAnswers);
 
-    const [filteredPossible, setFilteredPossible] = useState(possibleWords.filter((item)=> item !== wordHint));
+    const [filteredPossible, setFilteredPossible] = useState(() => {
+        if (possibleWords && wordHint) {
+            return possibleWords.filter((item) => item !== wordHint);
+        } else {
+            return []; // Return an empty array if either possibleWords or wordHint is undefined
+        }
+    });
     // words left in the anagram block
     const [wordsLeft, setWordsLeft] = useState(possibleWords.length - 1);
     // user input - set first to an empty sting
@@ -64,7 +70,7 @@ function GamePlay(props) {
     console.log("Correct (block) Answer:" + blockCorrect.length);
     console.log("Possible Words:" + possibleWords.length);
 
-    if (blockCorrect.length === wordAnswers.length - 1) {
+    if (blockCorrect.length === possibleWords.length - 1) {
                 
         console.log("All correct!")
         setMessage('Success! You got all anagrams for this word. Here is another one..')
