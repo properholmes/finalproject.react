@@ -1,9 +1,19 @@
 import React from 'react';
 
+
 function TextInput(props) {
+
   const handleChange = (e) => {
-    props.setInputValue(e.target.value); // Update input value using prop (optional)
-    props.checkAnswer(e.target.value);
+    props.setInputValue(e.target.value); // Update input value using prop 
+    props.checkAnswer(e.target.value);  // send value back to parent w/ callback handler
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Prevent form submission
+      // Do something with the input value, e.g., submit it to an API
+      console.log(props.inputValue);
+    }
   };
 
   return (
@@ -12,12 +22,13 @@ function TextInput(props) {
         <div id="your-guess">
           <input
             type="text"
-            className="input-group mb-3"
+            className="form-control"
             value={props.inputValue}
             onChange={handleChange}
+            onKeyDown={handleKeyPress} 
             placeholder="Type anagram guess here"
           />
-          <p>You entered: {props.inputValue}</p>
+          <br />
         </div>
       </form>
     </div>

@@ -10,53 +10,48 @@ import anagrams from "./anagramsArray.js"
 
 function GamePlay(props) {
     const [wordLength, setWordLength] = useState(props.wordLength); 
+    // all the word possibilies based on the character length the user selected in the first view
     const allWords = anagrams[wordLength];
+    // find the first group of anagrams
     const [wordAnswers, setWordAnswers] = useState(props.findRandom(allWords));
-    const [startingWord, setStartingWord] = useState(props.findRandom(wordAnswers));
+    // find the starting word in that anagram block
+    const [wordHint, setWordHint] = useState(props.findRandom(wordAnswers));
 
     
-    
+    // list of possible answers in anagram block
     const[possibleWords, setPossibleWords] = useState(wordAnswers);
+    // words left in the anagram block
     const [wordsLeft, setWordsLeft] = useState(possibleWords.length - 1);
-    const [inputValue, setInputValue] = useState(''); // State for input value;
+    // user input - set first to an empty sting
+    const [inputValue, setInputValue] = useState(''); 
+    //empty array for correct answers
     const [correctAnswers, setCorrectAnswers] = useState([]);
-    // const [score, setScore] = useState(0);
+    const[blockCorrect, setBlockCorrect]= useState([]);
 
+    const [message, setMessage] = useState('')
+
+    
+    //check answer function that sees if word is in anagram block and adds to correct answers array
     const checkAnswer = (userInput) => {
 
         const inList = wordAnswers.includes(userInput);
 
-            console.log(startingWord);
 
         if (inList) {
-            //console.log("in List " + wordAnswers.includes(userInput));
             const filteredArray = possibleWords.filter((item) => item !== userInput);
-            //console.log(filteredArray);
+            
             setWordsLeft(filteredArray.length);
             props.setScore(props.score + 1);
             // Add user input to correct answers array
-            setCorrectAnswers([...correctAnswers, userInput]);
-            console.log(correctAnswers);
-            // Update state to clear input field and update word list
-            setInputValue('');
-            setPossibleWords(filteredArray);
-
-            const filteredAnagrams = removeFromArrays(startingWord, allWords);
-                
-            const smallerArray = filterArray(startingWord, allWords);
+            setCorrectAnswers(c =>[...c, userInput]);
+            setBlockCorrect(b =>[...b, userInput]);
             
-            console.log(filteredAnagrams);
-            console.log(props.findRandom(filteredAnagrams));
+            // Update state to clear input field 
+            setInputValue('');
+            // Update possible words for the user to type from anagram block
+            setPossibleWords(p => filteredArray);
 
-            if (props.score === wordAnswers.length) {
-                console.log(filteredArray);
-                console.log("All correct!")
-                const newWordList = props.findRandom(filteredAnagrams);
-                setWordAnswers(newWordList);
-                console.log(wordAnswers);
-                const newWord = props.findRandom(newWordList);
-                setStartingWord(newWord);
-            }
+                
         } else {
             console.log("not present");
             // Handle wrong guess logic
@@ -64,8 +59,28 @@ function GamePlay(props) {
     };
 
 
-    
+    console.log("Correct Answer:" + correctAnswers.length);
+    console.log("Word Answers:" + wordAnswers.length);
 
+    if (blockCorrect.length === wordAnswers.length) {
+                
+        console.log("All correct!")
+        setMessage('Success! You got all anagrams for this word. Here is another one..')
+        const filteredAnagrams = removeFromArrays(wordHint, allWords);
+    
+        const newWordList = props.findRandom(filteredAnagrams);
+        setWordAnswers(newWordList);
+        setWordsLeft(wordAnswers.length);
+  
+        const newWord = props.findRandom(newWordList);
+        console.log(newWordList);
+        setWordHint(newWord);
+        setBlockCorrect([]);
+    }
+
+
+    
+    //checks if word is in any array in allData if it is - it is removed and filtered from allData
     function removeFromArrays(word, allData) {
         const filteredData = [];
         for (const key in allData) {
@@ -77,32 +92,22 @@ function GamePlay(props) {
         return filteredData;
     }
 
-    function filterArray(word, allData) {
-        const filteredData = [];
-        for (const key in allData) {
-            const childArray = allData[key];
-            if (childArray.includes(word)) {             
-                filteredData[key] = childArray; // Add child arrays excluding the word         
-            }
-        }
-        return filteredData;
-    }
-
+ 
 
 
     return (
         <div id="ana-play" className="object-fit-fill solid rounded display-6">
-            <Score score={setScore} />
+            <Score score={props.score} />
             <Timer />
             <hr />
-            <SolveMe startingWord={startingWord} wordLength={wordLength} />
-            <TextInput
+            <SolveMe wordHint={wordHint} wordLength={wordLength} message={message} />
+            <TextInput autofocus={true}
                 inputValue={inputValue} // Pass input value as prop
-                setInputValue={setInputValue} // Pass function to update input (optional)
+                setInputValue={setInputValue} // Pass function to update input 
                 checkAnswer={checkAnswer}
             />
             <Left wordsLeft={wordsLeft} />
-            <UserGuesses wordAnswers={wordAnswers} correctAnswers={correctAnswers} />
+            <UserGuesses possibleWords={possibleWords} correctAnswers={correctAnswers} />
         </div>
     );
 }

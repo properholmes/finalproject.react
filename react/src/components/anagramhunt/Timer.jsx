@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // navigate to another page using react router
 
 function Timer() {
-  const [secondsRemaining, setSecondsRemaining] = useState(600); // Initial seconds (10 minutes)
+  const [secondsRemaining, setSecondsRemaining] = useState(20000); // Initial seconds (10 minutes)
   const navigate = useNavigate();
 
   useEffect(() => {

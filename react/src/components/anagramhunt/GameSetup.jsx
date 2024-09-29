@@ -4,6 +4,7 @@ import Directions from "./Directions"
 import Button from "./AnagramBtn"
 
 function GameSetup (props){
+
     const options = Object.keys(anagrams);
    
     return (
@@ -16,7 +17,7 @@ function GameSetup (props){
                     setCurrentValue={props.setWordLength}
                     values={options}/>
                     <Directions />
-                    <Button onClick={props.buttonAction} bootstrapClass="btn btn-warning btn-lg" label="Play!" route="/play"/>
+                    <Button bootstrapClass="btn btn-warning btn-lg" label="Play!" route="/play"/>
         </div>
     )   
 }

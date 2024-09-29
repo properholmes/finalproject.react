@@ -15,20 +15,23 @@ import './anaApp.css'
 
 function App() { 
 
-  //include the findRandom function and constants in the App component for use with anagram-hunt
-  function findRandom(value) {
-    if (value) {
-      const random = Math.floor(Math.random() * value.length)
-      const randomSelected = value[random];
+  // find a random index in an array
+  function findRandom(array) {
+    if (array) {
+      const random = Math.floor(Math.random() * array.length)
+      const randomSelected = array[random];
       return randomSelected;
     }
       return 0;
-    
   }
 
+  // set the initial wordlength to 5 
   const [wordLength, setWordLength] = useState('5');
-  const wordAnswers = findRandom(anagrams[wordLength]);
+  // set the first block of anagram words to a random block of 5 characters
+  const [wordAnswers, setWordAnswer] = findRandom(anagrams[wordLength]);
+  // set the initial score to 0 - need the score to persist in GamePlay and GameScore - so set in parent to avoid change
   const [score, setScore] = useState(0);
+  // get length of anagram block and subtract 1 because we will show the user one of the words as a hint
   const [wordsLeft, setWordsLeft] = useState(wordAnswers.length - 1);
 
 
