@@ -15,8 +15,8 @@ function UserGuesses(props) {
         <ul className="list-group">
             {listOptions}
         </ul>
-
-        <h3>Your correct answers:</h3>
+        <br/>
+        <h5>Your correct answers:</h5>
         <ul className="list-group">
             {correctOptions}
         </ul>

@@ -20,9 +20,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-.navbar {
-  padding: 10px;
-}
+
 
 a {
   font-weight: 500;
@@ -74,6 +72,14 @@ li {
   background-color: rgba(119, 136, 153, 0.318);
   border-radius: 4px;
   padding: 10px;
+}
+
+.success-message {
+  width: 300px;
+  margin: auto;
+}
+.nav-container {
+  padding:20px !important;
 }
 
 @media (prefers-color-scheme: light) {
