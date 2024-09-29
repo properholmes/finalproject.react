@@ -54,7 +54,7 @@ function GamePlay(props) {
 
         if (inList) {
             const filteredArray = filteredPossible.filter((item) => item !== userInput);
-            
+            setMessage('')
             setWordsLeft(filteredArray.length);
             props.setScore(props.score + 1);
             // Add user input to correct answers array
@@ -80,7 +80,7 @@ function GamePlay(props) {
     if (blockCorrect.length === possibleWords.length - 1) {
                 
         console.log("All correct!")
-        setMessage('Success! You got all anagrams for this word. Here is another one..')
+        setMessage('🥳 Success! You got all anagrams for this word. Here is another one..')
         const filteredAnagrams = removeFromArrays(wordHint, allWords);
     
         const newWordList = props.findRandom(filteredAnagrams);

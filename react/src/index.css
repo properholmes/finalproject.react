@@ -13,6 +13,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  padding:50px;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+.navbar {
+  padding: 10px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -21,14 +32,11 @@ a {
 a:hover {
   color: #535bf2;
 }
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  /* min-width: 320px; */
-  min-height: 100vh;
+label {
+  font-weight: normal;
+  font-size: medium;
 }
+
 
 h1 {
   font-size: 3.2em;
@@ -54,8 +62,18 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+ul {
+  text-align: left;
+}
 li {
   font-size: large;
+}
+
+.word-hint {
+  
+  background-color: rgba(119, 136, 153, 0.318);
+  border-radius: 4px;
+  padding: 10px;
 }
 
 @media (prefers-color-scheme: light) {

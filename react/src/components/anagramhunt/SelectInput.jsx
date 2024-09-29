@@ -1,5 +1,4 @@
 function SelectInput({label, id, values, currentValue, setCurrentValue}) {
-    console.log(values);
 
     const selectOptions = values.map((value) => 
      <option value={value} key={value.toString()}> {value} </option>

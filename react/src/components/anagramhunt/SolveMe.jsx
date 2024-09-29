@@ -3,13 +3,12 @@ import Message from "./Message";
 function SolveMe(props) {
     return (
         <>
-            <Message message={props.message}/>
-         <h5>Guess anagram of the following word:</h5>
-     
-         <h2>{props.wordHint}</h2>
-         <h4>{props.wordLength} letters</h4>
+            <Message message={props.message} />
+            <h2 className="word-hint"> {props.wordHint}</h2>
+            <br/>
+            <h6> Guess the anagrams of this word: {props.wordLength} letters</h6>
         </>
-       
+
     )
 }
 
