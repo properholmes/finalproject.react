@@ -4,30 +4,33 @@ import React, { useState, useEffect } from 'react';
 
 function Mathfacts() {
   // State variables to manage game state
-  const [score, setScore] = useState(0);            // Tracks the player's score
-  const [operation, setOperation] = useState("addition"); // Current math operation selected by the player
-  const [problem, setProblem] = useState("");       // Current math problem presented to the player
-  const [userAnswer, setUserAnswer] = useState(""); // User's input answer
-  const [timer, setTimer] = useState(30);           // Countdown timer starting at 30 seconds
-  const [isGameActive, setIsGameActive] = useState(false); // Tracks whether the game is currently active
-  const [isFinalView, setIsFinalView] = useState(false);   // Tracks whether to show the final score view
+  const [score, setScore] = useState(0);            // track player's score
+  const [operation, setOperation] = useState("addition"); // current math operation selected by player
+  const [problem, setProblem] = useState("");       // current math problem presented to player
+  const [userAnswer, setUserAnswer] = useState(""); // user's input answer
+  const [timer, setTimer] = useState(30);           // countdown timer starting at 30 seconds
+  const [isGameActive, setIsGameActive] = useState(false); // track if game is currently active
+  const [isFinalView, setIsFinalView] = useState(false);   // tracks whether to show the final score view
 
-  // Effect to manage the countdown timer
+  // generate a random integer between low and high (inclusive)
+  const randInt = (low, high) => Math.floor(Math.random() * (high - low + 1) + low);
+
+  // effect to manage the countdown timer
   useEffect(() => {
     if (isGameActive && timer > 0) {
-      // Set an interval to decrease the timer every second
+      // set interval to decrease the timer every second
       const timerId = setInterval(() => {
         setTimer(prev => prev - 1); // Decrease the timer
       }, 1000);
 
-      // Cleanup function to clear the interval on component unmount or when conditions change
+      // cleanup function to clear the interval on component unmount or when conditions change
       return () => clearInterval(timerId);
     } else if (timer === 0) {
-      endGame(); // End the game when the timer reaches zero
+      endGame(); // end the game when the timer reaches zero
     }
   }, [isGameActive, timer]); // Depend on game active state and timer
 
-  // Function to start the game
+  // create a function to start the game
   const startGame = () => {
     setIsGameActive(true); // Activate the game state
     setScore(0);           // Reset the score
@@ -35,75 +38,72 @@ function Mathfacts() {
     createMathProblem();   // Generate the first math problem
   };
 
-  // Function to end the game
+  // create a function to end the game
   const endGame = () => {
-    setIsGameActive(false); // Deactivate the game state
-    setIsFinalView(true);   // Show the final score view
+    setIsGameActive(false); // Deactivate game state
+    setIsFinalView(true);   // Show final score view
   };
 
-  // Function to create a new math problem based on the selected operation
+  // function creating a new math problem based on the selected operation
   const createMathProblem = () => {
     const num1 = randInt(1, 10); // Generate a random number between 1 and 10
     const num2 = randInt(1, 10); // Generate another random number
 
-    let newProblem; // Variable to store the generated problem
+    let newProblem; // let variable to store the generated problem, 
 
-    // Switch statement to create the problem based on the selected operation
+    // switch statement to create the problem based on the selected operation
     switch (operation) {
       case "addition":
-        newProblem = `${num1} + ${num2} =`; // Format the addition problem
+        newProblem = `${num1} + ${num2} =`; // format an addition problem
         break;
       case "subtraction":
-        if (num1 < num2) [num1, num2] = [num2, num1]; // Ensure no negative results
-        newProblem = `${num1} - ${num2} =`; // Format the subtraction problem
+        if (num1 < num2) [num1, num2] = [num2, num1]; // ensure no negative results
+        newProblem = `${num1} - ${num2} =`; // format the subtraction problem
         break;
       case "multiplication":
-        newProblem = `${num1} * ${num2} =`; // Format the multiplication problem
+        newProblem = `${num1} * ${num2} =`; // format a multiplication problem
         break;
       case "division":
-        newProblem = `${num1 * num2} / ${num1} =`; // Ensure the division is valid
+        newProblem = `${num1 * num2} / ${num1} =`; // format division and ensure it is valid
         break;
       default:
-        newProblem = "Invalid operation!"; // Fallback for invalid operations
+        newProblem = "Invalid operation!"; // fallback for invalid operationsa
     }
     setProblem(newProblem); // Update the problem state with the new problem
   };
 
-  // Function to check the user's answer
+    // Function to evaluate the answer based on the problem
+    const evaluateAnswer = (problem) => {
+      const [left, operator, right] = problem.split(' '); // split the problem into components
+      const num1 = parseInt(left); // convert the left number to an integer
+      const num2 = parseInt(right); // convert the right number to an integer
+  
+      // switch statement to return the correct answer based on the operation
+      switch (operator) {
+        case '+':
+          return num1 + num2; // Return sum
+        case '-':
+          return num1 - num2; // Return difference
+        case '*':
+          return num1 * num2; // Return product
+        case '/':
+          return num1 / num2; // Return quotient
+        default:
+          return null; // Fallback if operation is invalid
+      }
+    };
+
+  // check the user's answer
   const checkAnswer = () => {
-    const correctAnswer = evaluateAnswer(problem); // Get the correct answer
-    if (parseInt(userAnswer) === correctAnswer) { // Compare user's answer to the correct answer
-      setScore(prev => prev + 1); // Increment score for correct answer
-      setUserAnswer(""); // Clear the input field
-      createMathProblem(); // Generate a new problem
+    const correctAnswer = evaluateAnswer(problem); // get the correct answer
+    if (parseInt(userAnswer) === correctAnswer) { // compare user's answer to correct answer
+      setScore(prev => prev + 1); // increment score for correct answer
+      setUserAnswer(""); // clear the input field
+      createMathProblem(); // generate a new problem
     } else {
-      // Handle incorrect answer feedback (to be implemented)
+      setUserAnswer(""); // resets input field to blank, perhaps add something else here later
     }
   };
-
-  // Function to evaluate the answer based on the problem
-  const evaluateAnswer = (problem) => {
-    const [left, operator, right] = problem.split(' '); // Split the problem into components
-    const num1 = parseInt(left); // Convert the left number to an integer
-    const num2 = parseInt(right); // Convert the right number to an integer
-
-    // Switch statement to return the correct answer based on the operation
-    switch (operator) {
-      case '+':
-        return num1 + num2; // Return sum
-      case '-':
-        return num1 - num2; // Return difference
-      case '*':
-        return num1 * num2; // Return product
-      case '/':
-        return num1 / num2; // Return quotient
-      default:
-        return null; // Fallback if operation is invalid
-    }
-  };
-
-  // Function to generate a random integer between low and high (inclusive)
-  const randInt = (low, high) => Math.floor(Math.random() * (high - low + 1) + low);
 
   return (
     <>
