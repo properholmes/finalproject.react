@@ -12,7 +12,6 @@ function GamePlay(props) {
     const [wordLength, setWordLength] = useState(props.wordLength); 
     // all the word possibilies based on the character length the user selected in the first view
     const [allWords, setAllWords] = useState(anagrams[wordLength]);
-    console.log(allWords);
    
     // list of possible answers in anagram block
     const[possibleWords, setPossibleWords] = useState(props.findRandom(allWords));
@@ -20,6 +19,8 @@ function GamePlay(props) {
     // find the starting word in that anagram block
     const [wordHint, setWordHint] = useState(props.findRandom(possibleWords));
 
+
+    // filter word array to remove the word hint or keyword
     const [filteredPossible, setFilteredPossible] = useState(() => {
         if (possibleWords && wordHint) {
             return possibleWords.filter((item) => item !== wordHint);
@@ -32,10 +33,6 @@ function GamePlay(props) {
     const [wordsLeft, setWordsLeft] = useState(possibleWords.length - 1);
     // user input - set first to an empty sting
     const [inputValue, setInputValue] = useState(''); 
-    //empty array for correct answers
-    const [correctAnswers, setCorrectAnswers] = useState([]);
-    const[blockCorrect, setBlockCorrect]= useState([]);
-
     const [message, setMessage] = useState('')
 
     
@@ -52,9 +49,8 @@ function GamePlay(props) {
             setWordsLeft(filteredArray.length);
             props.setScore(props.score + 1);
             // Add user input to correct answers array
-            setCorrectAnswers(c =>[...c, userInput]);
-            setBlockCorrect(b =>[...b, userInput]);
-            
+            props.setCorrectAnswers(c =>[...c, userInput]);
+            props.setBlockCorrect(b =>[...b, userInput]);   
             // Update state to clear input field 
             setInputValue('');
             // Update possible words for the user to type from anagram block
@@ -68,20 +64,15 @@ function GamePlay(props) {
     };
 
 
-    // console.log("Correct (block) Answer:" + blockCorrect.length);
-    // console.log("Possible Words: " + possibleWords.length + " " +possibleWords);
-
     if(allWords.length===0) {
         setMessage('Wow! You got all the correct answers. Take a bow 🙇');
         setFilteredPossible(['done']);
     }
 
-    if (blockCorrect.length === possibleWords.length - 1) {
+    if (props.blockCorrect.length === possibleWords.length - 1) {
         
         setMessage('🥳 Success! You got all anagrams for this word. Here is another one..')
         const filteredAnagrams = removeFromArrays(wordHint, allWords);
-
-        console.log(filteredAnagrams);
     
         const newWordList = props.findRandom(filteredAnagrams);
         setWordsLeft(w => possibleWords.length - 1);
@@ -89,11 +80,16 @@ function GamePlay(props) {
       
         setWordHint(w => newWord);
         setPossibleWords(newWordList);
-        //check to see if the newWordList is defined before filtering - was running into errors here
-        const newPossible =  newWordList.filter((item) => item !== newWord);
-        setFilteredPossible(f => [...newPossible]);
-        // setAllWords(a => [...filteredAnagrams]);
-        setBlockCorrect([]);
+      
+        if (allWords.length > 0) {
+            const newPossible = newWordList.filter((item) => item !== newWord);
+            setFilteredPossible(p => [...newPossible]);
+        } else {
+            // Handle the case where newWordList is empty
+            setMessage('Wow! You got all the correct answers. Take a bow 🙇');
+            setFilteredPossible([]);
+        }
+        props.setBlockCorrect([]);
 
     }
     
@@ -108,7 +104,7 @@ function GamePlay(props) {
             filteredData.push(childArray);
           }
         }
-        setAllWords(filteredData);
+        setAllWords(a => [...filteredData]);
         return filteredData;
     }
 
@@ -127,7 +123,7 @@ function GamePlay(props) {
                 checkAnswer={checkAnswer}
             />
             <Left wordsLeft={filteredPossible.length} />
-            <UserGuesses possibleWords={filteredPossible} correctAnswers={correctAnswers} />
+            <UserGuesses possibleWords={filteredPossible} correctAnswers={props.correctAnswers} />
         </div>
     );
 }

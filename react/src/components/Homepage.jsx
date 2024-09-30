@@ -7,7 +7,7 @@ function Homepage(props) {
         title: "Math Facts Practice",
         type: "math",
         description: "Fun and effective Math Practice, for all ages! A super fun way to sharpen your math skills and become a whiz with numbers! Ready for the challenge?",
-        src: "../src/MathFacts/Math.html",
+        src: "/mathfacts",
         image: "../src/assets/images/numbers.jpg"
       } 
     

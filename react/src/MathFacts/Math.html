@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,48 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="/src/App.css">
-  <link rel="stylesheet" href="math.css">
-  <script src="math.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./math.css">
+  <link rel="stylesheet" href="./index.css">
   <title>Play2Learn</title>
 </head>
 
 <body>
+  <header>
+    <nav className="nav-container navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a className="navbar-brand" href="./">Play2Learn</a>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
+            <a className="nav-link" href="./">Home<span className="sr-only">(current)</span></a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="./about">About Us</a>
+          </li>
+          <li className="nav-item dropdown">
+            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Games
+            </a>
+            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a className="dropdown-item" href="./src/MathFacts/Math.html" target="blank">Math Facts Practice</a>
+              <a className="dropdown-item" href="./anagramhunt" target="blank">Anagram Hunt</a>
+            </div>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/login">Login</a>
+          </li>
+        </ul>
+  
+      </div>
+    </nav>
+  </header>
+
   <main>
     <div id="math-container">
       <h2 id="math-title">Math Facts Practice</h2>
@@ -104,5 +140,21 @@
       </div>
     </div>
   </main>
+
+  <footer class="footer">
+    <p id="copywrite" aria-label="website Copywritten 2024 by Play2Learn">&copy; 2024 Play2Learn</p>
+    <address>
+      <a href="../contact-us.html" target="_blank">
+        <i class="fa-regular fa-envelope" id="email-p2l" alt="Email icon"></i></a>
+      <a href="https://www.instagram.com" target="_blank">
+        <i class="fa-brands fa-instagram" id='insta' alt="Instagram icon"></i></a>
+      <a href="https://twitter.com" target="_blank">
+        <i class="fa-brands fa-x-twitter" id='x-twitter' alt="X-Twitter icon"></i></a>
+      <a href="https://www.facebook.com" target="_blank">
+        <i class="fa-brands fa-facebook" id='meta-fb' alt="Meta-Facebook icon"></i></a>
+    </address>
+  </footer>
+  <script src="./math.js"></script>
 </body>
+
 </html>

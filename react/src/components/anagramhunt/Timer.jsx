@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // navigate to another page using react router
 
 function Timer() {
-  const [secondsRemaining, setSecondsRemaining] = useState(20000); // Initial seconds (10 minutes)
+  const [secondsRemaining, setSecondsRemaining] = useState(30); // Initial seconds (30 seconds)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -10,7 +10,7 @@ function Timer() {
     const timer = setInterval(() => {
       // Decrement secs remaining, make sure it doesn't go below 0
       setSecondsRemaining(prevSeconds => Math.max(0, prevSeconds - 1));
-    }, 10); // revise to 1000ms when not testing (10 minutes)
+    }, 1000); // revise to 1000ms when not testing 
 
     // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(timer);

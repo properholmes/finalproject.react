@@ -12,7 +12,7 @@ function Button( {buttondata} ) {
     } else {
 
         return (
-            <Link className="btn btn-primary" to={buttondata.src}>Play {buttondata.title}</Link>
+            <Link className="btn btn-primary" to={buttondata.src} target="_blank">Play {buttondata.title}</Link>
         )
 
     }

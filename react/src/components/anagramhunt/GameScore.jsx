@@ -9,9 +9,13 @@ function reset(props) {
 }
 
 
-function GameScore (props) {
+function GameScore(props) {
 
     const [scoreMessage, setScoreMessage] = useState('');
+    const correctList = props.correctAnswers;
+    const correctOptions = correctList.map((word, index) => (
+        <li className="list-group-item" style={{ color: 'green', fontWeight: 'bold' }} key={index}>{word}</li>
+    ));
 
     useEffect(() => {
         if (props.score > 2) {
@@ -21,12 +25,15 @@ function GameScore (props) {
         }
     }, [props.score]);
 
-    console.log(typeof props.score);
     return (
         <div id="ana-finalview" className="d-grid gap-5">
             <p className="display-3"> {scoreMessage}</p>
             <Score score={props.score} />
-            <Link to="/play" onClick={reset}className="btn btn-primary">Play Again!</Link>
+            <h5>Your correct answers:</h5>
+            <ul className="list-group">
+                {correctOptions}
+            </ul>
+            <Link to="/play" onClick={reset} className="btn btn-primary">Play Again!</Link>
             <Link to="/anagramhunt" onClick={reset} className="btn btn-primary">Back to Settings</Link>
         </div>
 

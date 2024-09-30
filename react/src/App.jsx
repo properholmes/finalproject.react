@@ -9,6 +9,7 @@ import GameSetup from './components/anagramhunt/GameSetup';
 import Header from "./components/Header";
 import Homepage from './components/Homepage';
 import Login from './components/Login';
+import Mathfacts from './components/Mathfacts'
 import Register from './components/Register';
 import './anaApp.css'
 
@@ -34,6 +35,9 @@ function App() {
   // get length of anagram block and subtract 1 because we will show the user one of the words as a hint
   const [wordsLeft, setWordsLeft] = useState(wordAnswers.length - 1);
 
+  // Logic for displaying correct answers in the final score view of anagram game
+  const [correctAnswers, setCorrectAnswers] = useState([]);
+  const[blockCorrect, setBlockCorrect]= useState([]);
 
   return (
     <>
@@ -54,13 +58,21 @@ function App() {
           wordAnswers={wordAnswers}
           wordLength={wordLength}
           wordsLeft={wordsLeft}
-          findRandom= {findRandom}/>
+          findRandom={findRandom}
+          correctAnswers={correctAnswers}
+          setCorrectAnswers={setCorrectAnswers}
+          blockCorrect={blockCorrect}
+          setBlockCorrect={setBlockCorrect}/>
         }>
         </Route>
         <Route exact path="/score" element={
-          <GameScore score={score}/>
+          <GameScore 
+          score={score}
+          correctAnswers={correctAnswers}
+          blockCorrect={blockCorrect}/>
         }>          
         </Route>
+        <Route exact path="/mathfacts" element={<Mathfacts />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} />
     </Routes>
