@@ -46,8 +46,8 @@ function Mathfacts() {
 
   // function creating a new math problem based on the selected operation
   const createMathProblem = () => {
-    const num1 = randInt(1, 10); // Generate a random number between 1 and 10
-    const num2 = randInt(1, 10); // Generate another random number
+    let num1 = randInt(1, 10); // Generate a random number between 1 and 10
+    let num2 = randInt(1, 10); // Generate another random number
 
     let newProblem; // let variable to store the generated problem, 
 
